@@ -20,3 +20,44 @@ void BitWriter::writeBits(uint32_t value, int n) {
     }
 }
 
+void BitWriter::writeByte(uint8_t byte) {  // 写入一个完整的字节
+    writeBits(byte, 8);                    // 调用 writeBits(byte, 8)，将 8 位数据逐位写入
+}
+
+void BitWriter::flush() {
+    if (bitCount > 0) {                         // 如果缓冲区还有未写入的位
+        buffer <<= (8 - bitCount);              // 则将 buffer 左移补齐到 8 位，低位补0
+        out.put(static_cast<char>(buffer));     // 写入流
+		buffer = 0;                             // 清空缓冲区
+		bitCount = 0;                           // 重置位计数，为下一次写入做准备
+    }
+}
+
+BitReader::BitReader(std::istream& in) : in(in) {
+    int c = in.get();                           // 从底层流中读取第一个字节
+    if (c != EOF) {                            
+		buffer = static_cast<uint8_t>(c);       // 将读取的字节存入缓冲区
+		bitCount = 8;                           // 初始化缓冲区计数为 8，表示缓冲区中有 8 位可供读取
+    }
+    else {
+		endOfFile = true;                      // 流为空，标记为文件结束
+    }
+}
+
+bool BitReader::readBit() {
+    if (endOfFile) return false;                 // 已读完，返回 0
+    bitCount--;                                  // 消耗 1 位
+    bool bit = (buffer >> bitCount) & 1;         // 提取当前最高位
+    bitsRead++;                                  // 统计总读取位数
+    if (bitCount == 0) {                         // 当前字节已读完
+		int c = in.get();                        // 从底层流中读取下一个字节
+        if (c != EOF) {
+            buffer = static_cast<uint8_t>(c);
+			bitCount = 8;                        // 重置缓冲区计数为 8，表示缓冲区中有 8 位可供读取
+        }
+        else {
+			endOfFile = true;                    // 标记为文件结束
+        }
+    }
+    return bit;
+}
