@@ -28,11 +28,14 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="core\bitstream.cpp">
-      <Filter>头文件</Filter>
+      <Filter>源文件\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\bitstream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="core\huffman.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

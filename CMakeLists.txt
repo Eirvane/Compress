@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Compress
     src/main.cpp
     src/core/bitstream.cpp
+    src/core/huffman.cpp
 )

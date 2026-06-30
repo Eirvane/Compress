@@ -61,3 +61,19 @@ bool BitReader::readBit() {
     }
     return bit;
 }
+
+uint32_t BitReader::readBits(int n) {
+    uint32_t value = 0;                                  // 初始化为 0，用于累积读取的位
+    for (int i = 0; i < n; ++i) {
+        value = (value << 1) | (readBit() ? 1 : 0);      // 将已读取的位整体左移，为下一位腾出最低位
+    }                                                    // 将新读到的位（0 或 1）放入 value 的最低位
+    return value;
+}
+
+uint8_t BitReader::readByte() {
+    return static_cast<uint8_t>(readBits(8));
+}
+
+bool BitReader::eof() const {
+    return endOfFile;
+}
