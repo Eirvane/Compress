@@ -41,5 +41,8 @@
     <ClInclude Include="core\huffman.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="io\file_reader.h">
+      <Filter>源文件\io</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

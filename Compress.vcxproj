@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="core\bitstream.h" />
     <ClInclude Include="core\huffman.h" />
+    <ClInclude Include="io\file_reader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
