@@ -34,4 +34,5 @@ private:
     int bitCount = 0;
     uint64_t bitsRead = 0;
     bool endOfFile = false;
+    
 };

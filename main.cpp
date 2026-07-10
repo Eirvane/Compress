@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include "core/bitstream.h"
+#include "io/file_reader.h"
 
 const char* MAGIC = "MYHM";
 
@@ -15,3 +16,9 @@ bool compress(const std::string& inputPath, const std::string& outputPath) {
         return false;
     }
     check.close();
+
+    auto data = FileReader::readAll(inputPath);
+    std :: cout << "Original size " << date.size() << "bytes\n"
+
+
+
