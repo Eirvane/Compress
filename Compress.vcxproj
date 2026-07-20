@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="core\bitstream.cpp" />
     <ClCompile Include="core\huffman.cpp" />
+    <ClCompile Include="io\file_reader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,3 +1,4 @@
+// 自定义位流读写
 #pragma once
 #include <iostream>
 #include <cstdint>

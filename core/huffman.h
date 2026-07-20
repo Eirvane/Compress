@@ -1,3 +1,4 @@
+// 霍夫曼编解码器
 #pragma once
 #include <vector>
 #include <cstdint>
